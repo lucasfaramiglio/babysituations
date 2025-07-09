@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parenting Challenge Cards</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #FFF5E6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px;
+            margin: 0;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        .logo {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            width: 100px;
+            height: auto;
+        }
+        h1 {
+            color: #6A1B9A;
+            text-align: center;
+            margin: 40px 0 20px 0;
+            font-size: 28px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+        }
+        .instructions {
+            background-color: #F57C00;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            text-align: center;
+            max-width: 600px;
+            border: 3px solid #6A1B9A;
+            font-size: 16px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 12px;
+            max-width: 900px;
+            width: 100%;
+            height: calc(100vh - 280px);
+            margin-bottom: 20px;
+        }
+        .card {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+            text-align: center;
+            padding: 12px;
+            box-sizing: border-box;
+            min-height: 100px;
+        }
+        .number-card {
+            background-color: #6A1B9A;
+            color: white;
+            border: 3px solid #F57C00;
+        }
+        .situation-card {
+            background-color: #F57C00;
+            color: white;
+            display: none;
+            font-size: 14px;
+            border: 3px solid #6A1B9A;
+            line-height: 1.3;
+            flex-direction: column;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+        .solution-button {
+            background-color: white;
+            color: #6A1B9A;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            margin-top: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            align-self: center;
+            transition: all 0.2s ease;
+        }
+        .solution-button:hover {
+            background-color: #6A1B9A;
+            color: white;
+        }
+        .solution {
+            display: none;
+            background-color: white;
+            color: #333;
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 8px;
+            font-size: 13px;
+            border-left: 4px solid #6A1B9A;
+        }
+        .reset-button {
+            background-color: #6A1B9A;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+        .reset-button:hover {
+            background-color: #F57C00;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+        }
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(4, 1fr);
+                height: calc(100vh - 250px);
+            }
+            .card {
+                font-size: 16px;
+                min-height: 80px;
+            }
+            .situation-card {
+                font-size: 12px;
+            }
+            .solution {
+                font-size: 11px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <img src="1ohfive.png" alt="Parenting Guide Logo" class="logo">
+
+    <h1>Parenting Challenge Cards</h1>
+    
+    <div class="instructions">
+        <p>Click on a number card to reveal a parenting situation.<br>
+        Think about how you would handle it, then click "See Solution" for suggestions!</p>
+    </div>
+    
+    <div class="container">
+        <!-- Card 1 -->
+        <div class="card number-card" onclick="revealSituation(1)">1</div>
+        <div class="card situation-card" id="situation1">
+            "Your child throws a tantrum in the supermarket because you won't buy candy."
+            <button class="solution-button" onclick="showSolution(1)">See Solution</button>
+            <div class="solution" id="solution1">
+                <strong>Suggested approach:</strong> Stay calm, kneel to their level, and acknowledge their feelings: "I see you're upset because you want candy. We're not getting candy today, but you can help me choose fruit." Offer limited choices to regain control.
+            </div>
+        </div>
+        
+        <!-- Card 2 -->
+        <div class="card number-card" onclick="revealSituation(2)">2</div>
+        <div class="card situation-card" id="situation2">
+            "Your toddler refuses to share toys with a playmate."
+            <button class="solution-button" onclick="showSolution(2)">See Solution</button>
+            <div class="solution" id="solution2">
+                <strong>Suggested approach:</strong> Say, "It's hard to share sometimes. Let's take turns - you play for 5 minutes, then your friend gets a turn." Use a timer. Praise sharing behavior when it occurs.
+            </div>
+        </div>
+        
+        <!-- Card 3 -->
+        <div class="card number-card" onclick="revealSituation(3)">3</div>
+        <div class="card situation-card" id="situation3">
+            "Your 8-year-old is afraid to sleep alone after watching a scary movie."
+            <button class="solution-button" onclick="showSolution(3)">See Solution</button>
+            <div class="solution" id="solution3">
+                <strong>Suggested approach:</strong> Validate the fear: "That movie was scary, wasn't it?" Create a "brave spray" (water in a spray bottle) to "ward off monsters." Do a "monster check" together and gradually reduce reassurance.
+            </div>
+        </div>
+        
+        <!-- Card 4 -->
+        <div class="card number-card" onclick="revealSituation(4)">4</div>
+        <div class="card situation-card" id="situation4">
+            "Your teenager slams their door after you say they can't go to a party."
+            <button class="solution-button" onclick="showSolution(4)">See Solution</button>
+            <div class="solution" id="solution4">
+                <strong>Suggested approach:</strong> Wait until calm, then say: "I understand you're angry. Let's talk when you're ready." Later, explain your reasons calmly and discuss alternative social plans. Set consequences for door-slamming.
+            </div>
+        </div>
+        
+        <!-- Card 5 -->
+        <div class="card number-card" onclick="revealSituation(5)">5</div>
+        <div class="card situation-card" id="situation5">
+            "Your 4-year-old refuses to brush their teeth at bedtime."
+            <button class="solution-button" onclick="showSolution(5)">See Solution</button>
+            <div class="solution" id="solution5">
+                <strong>Suggested approach:</strong> Make it fun: "Let's brush the sugar bugs away!" Use a sticker chart. Sing a silly brushing song. Offer limited choices: "Do you want the red or blue toothbrush tonight?"
+            </div>
+        </div>
+        
+        <!-- Card 6 -->
+        <div class="card number-card" onclick="revealSituation(6)">6</div>
+        <div class="card situation-card" id="situation6">
+            "Your child says 'I hate you!' when you enforce screen time limits."
+            <button class="solution-button" onclick="showSolution(6)">See Solution</button>
+            <div class="solution" id="solution6">
+                <strong>Suggested approach:</strong> Respond calmly: "I know you're upset, but I love you too much to argue." Later, discuss appropriate ways to express anger. Consistently enforce time limits with visual timers.
+            </div>
+        </div>
+        
+        <!-- Card 7 -->
+        <div class="card number-card" onclick="revealSituation(7)">7</div>
+        <div class="card situation-card" id="situation7">
+            "Your child is crying because their ice cream fell on the ground."
+            <button class="solution-button" onclick="showSolution(7)">See Solution</button>
+            <div class="solution" id="solution7">
+                <strong>Suggested approach:</strong> Empathize first: "Oh no! That was your favorite part, wasn't it?" Offer comfort, then problem-solve together: "Should we clean up and get a new one, or choose something else?"
+            </div>
+        </div>
+        
+        <!-- Card 8 -->
+        <div class="card number-card" onclick="revealSituation(8)">8</div>
+        <div class="card situation-card" id="situation8">
+            "Your child refuses to wear their coat in cold weather."
+            <button class="solution-button" onclick="showSolution(8)">See Solution</button>
+            <div class="solution" id="solution8">
+                <strong>Suggested approach:</strong> Offer choices: "Would you rather wear this coat or carry it?" Use natural consequences: "If you're cold without it, you can put it on later." Bring the coat regardless.
+            </div>
+        </div>
+    </div>
+
+    <button class="reset-button" onclick="resetAllCards()">Reset All Cards</button>
+
+    <script>
+        function revealSituation(cardNum) {
+            // Show the selected situation card and hide its corresponding number card
+            document.getElementById(`situation${cardNum}`).style.display = 'flex';
+            document.querySelectorAll('.number-card')[cardNum-1].style.display = 'none';
+        }
+        
+        function showSolution(cardNum) {
+            const solution = document.getElementById(`solution${cardNum}`);
+            if (solution.style.display === 'block') {
+                solution.style.display = 'none';
+            } else {
+                solution.style.display = 'block';
+            }
+        }
+        
+        function resetAllCards() {
+            const numberCards = document.querySelectorAll('.number-card');
+            const situationCards = document.querySelectorAll('.situation-card');
+            
+            // Show all number cards
+            numberCards.forEach(card => {
+                card.style.display = 'flex';
+            });
+            
+            // Hide all situation cards
+            situationCards.forEach(card => {
+                card.style.display = 'none';
+            });
+            
+            // Hide all solutions
+            document.querySelectorAll('.solution').forEach(sol => {
+                sol.style.display = 'none';
+            });
+        }
+    </script>
+</body>
+</html>
